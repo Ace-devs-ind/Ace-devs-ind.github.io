@@ -109,4 +109,133 @@
   .contact-links { display: flex; flex-direction: column; gap: 20px; }
   .contact-link {
     font-family: 'Syncopate', sans-serif;
-    font
+    font-size: clamp(30px, 6vw, 70px);
+    text-decoration: none;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255,255,255,0.5);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+  .contact-link:hover {
+    color: var(--color-yellow);
+    -webkit-text-stroke: 0px;
+    text-shadow: 0 0 30px rgba(255, 222, 0, 0.8);
+  }
+
+  footer { margin-top: 100px; padding: 40px 0; display: flex; justify-content: space-between; font-size: 14px; opacity: 0.6; }
+
+  /* Mobile Tap Effect */
+  @media (hover: none) and (pointer: coarse) {
+    .project-card, .skill-pill {
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .project-card:active, .skill-pill:active {
+      transform: scale(0.96);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="aurora">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <nav>
+    <div class="brand">ABHINAV SHARMA</div>
+    <div class="status">
+      <div class="status-dot"></div>
+      AVAILABLE FOR PROJECTS
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="hero">
+      <h1>Building software<br/>that responds<br/>when it matters</h1>
+      <p>Real-time systems, geospatial tools, and interactive experiences. Crafting high-end digital solutions from India.</p>
+    </section>
+
+    <h2 class="section-title">01 / Selected Work</h2>
+    <div class="projects">
+      
+      <!-- SAHAYAK 24/7 -->
+      <div class="magnetic-wrap">
+        <div class="project-card magnetic">
+          <h3 class="project-title">SAHAYAK 24/7</h3>
+          <p class="project-desc">Real-time disaster response platform. One-tap SOS, live command dashboard, automatic dispatch with road-following routes.</p>
+          <div class="tags" style="margin-bottom: 25px;">
+            <span class="tag">JavaScript</span><span class="tag">Firebase</span><span class="tag">Leaflet</span><span class="tag">OSRM</span>
+          </div>
+          <div style="display: flex; gap: 20px; font-size: 14px; font-weight: 600;">
+            <a href="https://resqtech-sahayak.web.app" target="_blank" style="color: var(--color-blue); text-decoration: none; text-transform: uppercase;">Citizen SOS ↗</a>
+            <a href="https://resqtech-sahayak.web.app/dashboard.html" target="_blank" style="color: var(--color-blue); text-decoration: none; text-transform: uppercase;">Rescue Dashboard ↗</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- NoteShare Cloud -->
+      <div class="magnetic-wrap">
+        <div class="project-card pink magnetic">
+          <h3 class="project-title">NoteShare Cloud</h3>
+          <p class="project-desc">A secure cloud-based platform for B.Tech note-sharing. Engineered with robust authentication and reliable file storage.</p>
+          <div class="tags" style="margin-bottom: 25px;">
+            <span class="tag">JavaScript</span><span class="tag">Supabase</span><span class="tag">Netlify</span><span class="tag">HTML/CSS</span>
+          </div>
+          <div style="display: flex; gap: 20px; font-size: 14px; font-weight: 600;">
+            <a href="https://darling-pavlova-390103.netlify.app/" target="_blank" style="color: var(--color-pink); text-decoration: none; text-transform: uppercase;">Open NoteShare ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">02 / Arsenal</h2>
+    <div class="skills-container">
+      <div class="magnetic-wrap"><div class="skill-pill magnetic">JavaScript</div></div>
+      <div class="magnetic-wrap"><div class="skill-pill magnetic">HTML & CSS</div></div>
+      <div class="magnetic-wrap"><div class="skill-pill magnetic">Firebase</div></div>
+      <div class="magnetic-wrap"><div class="skill-pill magnetic">Supabase</div></div>
+      <div class="magnetic-wrap"><div class="skill-pill magnetic">Netlify</div></div>
+      <div class="magnetic-wrap"><div class="skill-pill magnetic">Leaflet.js</div></div>
+      <div class="magnetic-wrap"><div class="skill-pill magnetic">Python</div></div>
+      <div class="magnetic-wrap"><div class="skill-pill magnetic">Git & GitHub</div></div>
+      <div class="magnetic-wrap"><div class="skill-pill magnetic">Roblox Studio</div></div>
+      <div class="magnetic-wrap"><div class="skill-pill magnetic">Blender</div></div>
+    </div>
+
+    <h2 class="section-title">03 / Let's Connect</h2>
+    <div class="contact-links">
+      <a href="https://github.com/Ace-devs-ind" target="_blank" class="contact-link">GitHub ↗</a>
+      <a href="mailto:abhinavnsps@gmail.com" class="contact-link">Email ↗</a>
+    </div>
+
+    <footer>
+      <span>&copy; 2026 Abhinav Sharma</span>
+      <span>India</span>
+    </footer>
+  </div>
+
+  <script>
+    // Magnetic Hover Effect
+    const magneticElements = document.querySelectorAll('.magnetic');
+    
+    magneticElements.forEach((el) => {
+      const wrap = el.parentElement;
+      
+      wrap.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) rotateX(${-y * 0.05}deg) rotateY(${x * 0.05}deg)`;
+      });
+      
+      wrap.addEventListener('mouseleave', () => {
+        el.style.transform = 'translate(0px, 0px) rotateX(0deg) rotateY(0deg)';
+      });
+    });
+  </script>
+</body>
+</html>
